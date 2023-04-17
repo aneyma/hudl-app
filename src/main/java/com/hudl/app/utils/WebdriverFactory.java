@@ -1,5 +1,6 @@
 package com.hudl.app.utils;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -10,15 +11,15 @@ import java.time.Duration;
 public class WebdriverFactory {
 
     private static WebDriver driver;
-    private final static String DEFAULT_FF_VERSION = "47.0.1";
-    private final static String HUB_URL = "http://localhost:4444/wd/hub/";
+    private static final Logger log = Logger.getLogger(WebdriverFactory.class);
+
 
     public static WebDriver getWebdriver() {
 
         if(driver == null) {
             try{
 
-                System.out.println("CREATING NEW INSTANCE OF WEBDRIVER");
+                log.info("CREATING NEW INSTANCE OF WEBDRIVER");
                 driver = initialiseWebDriver();
                 driver.manage().window().maximize();
             } finally {
@@ -75,9 +76,14 @@ public class WebdriverFactory {
     }
 
     private static WebDriver createChromeDriver() {
+
+        log.info(System.getProperty("chrome_driver_path"));
+        final String path = System.getProperty("chrome_driver_path");
+
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
-        System.setProperty("webdriver.chrome.driver", "/Users/aneyma/workspace/chromedriver");
+
+        System.setProperty("webdriver.chrome.driver", path);
         WebDriver driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));

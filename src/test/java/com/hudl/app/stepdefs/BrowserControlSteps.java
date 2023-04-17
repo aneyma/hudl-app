@@ -25,26 +25,7 @@ public class BrowserControlSteps {
 	public void i_navigate_to(String url) throws Throwable {
 
 		driver.get(url);
-		System.out.println("THE BROWSER TITLE IS - " + driver.getTitle() );
+		log.info("THE BROWSER TITLE IS - " + driver.getTitle() );
 	}
-	
-//	@Given("^I set the browser dimensions to the specified size$")
-//	public void i_set_the_browser_dimensions_to_the_specified_size(DataTable table) throws Throwable {
-//		 Map<String,String> rows = table.asMaps(String.class, String.class).get(0);
-//	     int width = Integer.parseInt(rows.get("width"));
-//	     int height = Integer.parseInt(rows.get("height"));
-//	     driver.manage().window().setSize(new Dimension(width, height));
-//	}
-	
-	
-//	/**
-//     * Method to be invoked after the scenario has completed execution
-//     */
-//
-//	public void clearBrowser(){
-//
-//        System.out.println("Cleaning session values of browser instance");
-//
-//	}
 
 }
