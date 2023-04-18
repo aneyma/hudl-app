@@ -50,27 +50,32 @@ public class WebdriverFactory {
                 driver = createChromeDriver();
                 break;
             case "firefox" :
+                driver = createFirefoxDriver();
+                break;
             default:
-                driver = createChromeDriver();
+                driver = createFirefoxDriver();
         }
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
 
         return driver;
     }
 
     /**
      *Returns the browser to run the tests on set via System property
-     * If no system property variable set the default browser Chrome will be returned
+     * If no system property variable set the default browser Firefox will be returned
      */
     private static String getBrowserType() {
 
         try{
             return System.getProperty("browser").toLowerCase();
         }catch (NullPointerException ex) {
-            return "chrome";
+            return "firefox";
         }
     }
 
-    private static WebDriver createFirefoxFDriver() {
+    private static WebDriver createFirefoxDriver() {
         WebDriver driver = new FirefoxDriver();
         return driver;
     }
@@ -79,15 +84,14 @@ public class WebdriverFactory {
 
         log.info(System.getProperty("chrome_driver_path"));
         final String path = System.getProperty("chrome_driver_path");
+        if(path==null)
+            throw new RuntimeException("PLEASE SUPPLY THE PATH FOR CHROME DRIVER");
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
 
         System.setProperty("webdriver.chrome.driver", path);
         WebDriver driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
-
         return driver;
     }
 }
