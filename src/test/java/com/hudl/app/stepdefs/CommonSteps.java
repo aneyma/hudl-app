@@ -5,8 +5,11 @@ import com.hudl.app.pageObjects.LoginMenu;
 import com.hudl.app.utils.SharedDriver;
 import io.cucumber.java.en.Given;
 import org.openqa.selenium.WebDriver;
-
 import static com.hudl.app.utils.Constants.BASE_URL;
+
+/**
+ * StepDef class for any generic actions for Hudl
+ */
 
 public class CommonSteps {
 

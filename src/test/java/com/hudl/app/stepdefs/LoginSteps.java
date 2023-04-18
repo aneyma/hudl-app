@@ -10,6 +10,9 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 
+/**
+ * StepDef for actions related to Login
+ */
 public class LoginSteps {
 
     private final WebDriver driver;

@@ -5,8 +5,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
+
+/**
+ * PageObject defining all elements and business actions applicable for Hudl LoginHelp page
+ */
 
 public class LoginHelp extends BasePage<LoginHelp>{
 
@@ -41,6 +44,12 @@ public class LoginHelp extends BasePage<LoginHelp>{
         return (new WebDriverWait(driver, Duration.ofSeconds(10)))
                 .until(ExpectedConditions.visibilityOf(checkEmailText)).isDisplayed();
     }
+
+    @Override
+    public void isLoaded() {}
+
+    @Override
+    public void load() {}
 
 
 }

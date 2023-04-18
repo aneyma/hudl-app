@@ -4,6 +4,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+/**
+ * PageObject defining all elements and business actions applicable for Hudl HomePage
+ */
 public class HomePage extends BasePage<HomePage>{
 
     public HomePage(WebDriver driver){
@@ -17,6 +20,12 @@ public class HomePage extends BasePage<HomePage>{
     public void login(){
         login.click();
     }
+
+    @Override
+    public void isLoaded() {}
+
+    @Override
+    public void load() {}
 
 
 

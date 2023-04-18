@@ -11,6 +11,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
+/**
+ *
+ * Class that initialises elements defined in the supplied PageObject model
+ * Contains any common methods to check/verify elements
+ */
 public abstract class BasePage<T extends BasePage<T>> extends LoadableComponent<T> {
 
     protected static WebDriver driver;
@@ -18,32 +23,21 @@ public abstract class BasePage<T extends BasePage<T>> extends LoadableComponent<
 
     protected BasePage(WebDriver webDriver) {
         driver = webDriver;
-        PageFactory.initElements(driver,this);
-
-
-
+        PageFactory.initElements(driver, this);
     }
 
-    @Override
-            public void isLoaded() {}
+    public static boolean findElementSafely(WebElement webElement, By by) {
 
-            @Override
-            public void load(){
-
-            }
-
-        public static boolean findElementSafely(WebElement webElement, By by) {
-
-            try {
-                return webElement.findElement(by).isEnabled();
-            } catch (NoSuchElementException ex) {
-                return false;
-            }
+        try {
+            return webElement.findElement(by).isEnabled();
+        } catch (NoSuchElementException ex) {
+            return false;
         }
+    }
 
-        public static void waitForElementToBeClickable(WebElement element){
-            (new WebDriverWait(driver, Duration.ofSeconds(wait)))
-                    .until(ExpectedConditions.elementToBeClickable(element));
-        }
+    public static void waitForElementToBeClickable(WebElement element) {
+        (new WebDriverWait(driver, Duration.ofSeconds(wait)))
+                .until(ExpectedConditions.elementToBeClickable(element));
+    }
 
 }

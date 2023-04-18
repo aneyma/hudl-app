@@ -1,8 +1,8 @@
 Feature: Hudl login test
 
-#  As a user
-#  When I enter correct credentials on login page
-#  Then I should be able to successfully login
+  As a user
+  When I enter correct credentials on login page
+  Then I should be able to successfully login
 
 
   Scenario: Successful Login

@@ -8,6 +8,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.time.Duration;
 
+/**
+ * Creates Webdriver instances based on the browser type supplied, if not supplied default (Firefox) will be used.
+ */
 public class WebdriverFactory {
 
     private static WebDriver driver;

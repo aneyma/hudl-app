@@ -6,6 +6,9 @@ import io.cucumber.java.en.Given;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
+/**
+ * StepDef class for generic browser actions
+ */
 public class BrowserControlSteps {
 
     private final WebDriver driver;

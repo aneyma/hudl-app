@@ -5,8 +5,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
+
+/**
+ * PageObject defining all elements and business actions applicable for Hudl LoginPage
+ */
 
 public class LoginPage extends BasePage<LoginPage> {
 
@@ -58,5 +61,11 @@ public class LoginPage extends BasePage<LoginPage> {
         return (new WebDriverWait(driver, Duration.ofSeconds(10)))
                 .until(ExpectedConditions.textToBePresentInElement(loginError,ERROR_MSG));
     }
+
+    @Override
+    public void isLoaded() {}
+
+    @Override
+    public void load() {}
 
 }
